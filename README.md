@@ -6,14 +6,14 @@ The purpose is to prevent phishing where domains are usually newly acquired or h
 
 There is also functionality to add exclusions via a whitelist of trusted domains.
 
-# Usage
+## Usage
 
 ```
 npm install --global web-ext
 web-ext run --verbose
 ```
 
-# References 
+## References 
 
 - https://github.com/mdn/webextensions-examples/tree/master/proxy-blocker
 - http://downloads.majestic.com/majestic_million.csv

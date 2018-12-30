@@ -1,15 +1,16 @@
 {
   "manifest_version": 2,
-  "name": "TopMillion",
+  "name": "Top Million",
   "description": "Restrict requests to the million most visited sites.",
   "version": "1.0",
   "icons": {
-    "48": "block.svg",
-    "96": "block.svg"
+    "48": "globe.svg",
+    "96": "globe.svg"
   },
   "applications": {
     "gecko": {
-      "strict_min_version": "56.0a1"
+      "id": "topmillion@benjaminkoffel",
+      "strict_min_version": "57"
     }
   },
   "background": {
@@ -18,7 +19,7 @@
     ]
   },
   "options_ui": {
-    "page": "options/options.html",
+    "page": "options.html",
     "browser_style": true
   },
   "permissions": [
