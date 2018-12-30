@@ -8,6 +8,8 @@ The purpose is to prevent phishing attacks where domains are often newly acquire
 
 There is also functionality to add exclusions via a whitelist of trusted domains.
 
+[Download and install latest build.](https://circleci.com/api/v1/project/benjaminkoffel/top-million/latest/artifacts/0/home/circleci/project/top_million.xpi)
+
 ## Usage
 
 ```

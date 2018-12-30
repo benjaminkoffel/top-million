@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - master
     docker:
       - image: circleci/node:8.14
     steps:
@@ -8,5 +11,6 @@ jobs:
       - run: sudo npm install --global web-ext
       - run: sed -i "s/1.0.0/1.0.${CIRCLE_BUILD_NUM}/g" manifest.json
       - run: web-ext sign --api-key $FIREFOX_KEY --api-secret $FIREFOX_SECRET
+      - run: mv web-ext-artifacts/top_million-1.0.${CIRCLE_BUILD_NUM}-an+fx.xpi top_million.xpi
       - store_artifacts:
-          path: web-ext-artifacts/
+          path: top_million.xpi
