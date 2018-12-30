@@ -6,13 +6,14 @@ browser.proxy.onProxyError.addListener(error => {
   console.error(`Proxy error: ${error.message}`);
 });
 
-function httpRequest(method, url, timeout, callback) {
+function getTopSites(callback) {
+  url = browser.runtime.getURL("million.lst");
   var xhr = new XMLHttpRequest();
-  xhr.open(method, url, true);
-  xhr.timeout = timeout;
+  xhr.open("GET", url, true);
+  xhr.timeout = 10000;
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      callback(xhr.responseText);
+      callback(xhr.responseText.split("\n"));
     } else {
       callback(null);
     }
@@ -21,41 +22,34 @@ function httpRequest(method, url, timeout, callback) {
 }
 
 function handleInit() {
-  browser.storage.onChanged.addListener((settings) => {
-    allowed = settings.top.newValue.concat(settings.whitelist.newValue);
-    browser.runtime.sendMessage(allowed, {
-      toProxyScript: true
-    });
-  });
-  browser.storage.local.get()
-    .then((settings) => {
-      if (Object.keys(settings).length === 0 && settings.constructor === Object) {
-        var url = browser.runtime.getURL("million.lst");
-        httpRequest("GET", url, 10000, (response) => {
-          if (response) {
-            alert(response);
-            defaultSettings = {
-              top: response.split("\n"),
-              whitelist: [
-                "localhost",
-                "google.com"
-              ]
-            }
-            browser.storage.local.set(defaultSettings);
-          } else {
-            console.log("Error retrieving top sites");
-          }
-        });
-      } else {
-        allowed = settings.top.concat(settings.whitelist);
+  getTopSites((sites) => {
+    if (sites) {
+      browser.storage.onChanged.addListener((settings) => {
+        allowed = sites.concat(settings.whitelist.newValue);
         browser.runtime.sendMessage(allowed, {
           toProxyScript: true
         });
-      }
-    })
-    .catch(() => {
-      console.log("Error retrieving stored settings");
-    });
+      });
+      browser.storage.local.get()
+        .then((settings) => {
+          if (Object.keys(settings).length === 0 && settings.constructor === Object) {
+            browser.storage.local.set({
+              whitelist: ["localhost"]
+            });
+          } else {
+            allowed = sites.concat(settings.whitelist);
+            browser.runtime.sendMessage(allowed, {
+              toProxyScript: true
+            });
+          }
+        })
+        .catch(() => {
+          console.log("Error retrieving stored settings.");
+        });
+    } else {
+      console.log("Error retrieving top sites.");
+    }
+  });
 }
 
 function handleMessage(message, sender) {
