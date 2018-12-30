@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Top Million",
   "description": "Restrict requests to the million most visited sites.",
-  "version": "1.0",
+  "version": "1.0.0",
   "icons": {
     "48": "globe.svg",
     "96": "globe.svg"
