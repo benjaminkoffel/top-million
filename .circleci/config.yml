@@ -3,7 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.14
-    
     steps:
       - checkout
       - run: sudo npm install --global web-ext
