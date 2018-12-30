@@ -9,4 +9,4 @@ jobs:
     steps:
       - checkout
       - run: sudo npm install --global web-ext
-      - run: web-ext sign --api-key $FIREFOX_KEY --api-secret $FIREFOX_SECRET
+      - run: web-ext sign --api-key ${FIREFOX_KEY} --api-secret ${FIREFOX_SECRET}
