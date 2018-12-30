@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run: 
           name: Install Mozilla web-ext.
-          commad: sudo npm install --global web-ext
+          command: sudo npm install --global web-ext
       - run: 
           name: Build and sign extension.
           command: web-ext sign --api-key $FIREFOX_KEY --api-secret $FIREFOX_SECRET
