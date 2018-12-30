@@ -1,5 +1,7 @@
 # Top Million
 
+[![CircleCI](https://circleci.com/gh/benjaminkoffel/top-million.svg?style=svg)](https://circleci.com/gh/benjaminkoffel/top-million)
+
 A Firefox extension that restricts requests to the top million most visited sites.
 
 The purpose is to prevent phishing attacks where domains are often newly acquired or have a poor reputation.
