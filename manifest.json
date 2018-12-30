@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "TopMillion",
+  "description": "Restrict requests to the million most visited sites.",
+  "version": "1.0",
+  "icons": {
+    "48": "block.svg",
+    "96": "block.svg"
+  },
+  "applications": {
+    "gecko": {
+      "strict_min_version": "56.0a1"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true
+  },
+  "permissions": [
+    "proxy", 
+    "storage"
+  ]
+}
