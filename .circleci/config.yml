@@ -6,12 +6,5 @@ jobs:
     
     steps:
       - checkout
-      - run: 
-          name: Install Mozilla web-ext.
-          command: sudo npm install --global web-ext
-      - run: 
-          name: Build and sign extension.
-          command: web-ext sign --api-key $FIREFOX_KEY --api-secret $FIREFOX_SECRET
-          environment:
-            FIREFOX_KEY: firefox_key
-            FIREFOX_SECRET: firefox_secret
+      - run: sudo npm install --global web-ext
+      - run: web-ext sign --api-key $FIREFOX_KEY --api-secret $FIREFOX_SECRET
