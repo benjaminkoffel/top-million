@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.15.0-alpine
+    environment:
+      FIREFOX_KEY: firefox_key
+      FIREFOX_SECRET: firefox_secret
+    steps:
+      - checkout
+      - run: npm install web-ext
+      - run: web-ext sign --api-key $FIREFOX_KEY --api-secret $FIREFOX_SECRET
