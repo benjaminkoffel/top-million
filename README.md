@@ -2,7 +2,7 @@
 
 A Firefox extension that restricts requests to the top million most visited sites.
 
-The purpose is to prevent phishing where domains are usually newly acquired or have poor reputation.
+The purpose is to prevent phishing attacks where domains are often newly acquired or have a poor reputation.
 
 There is also functionality to add exclusions via a whitelist of trusted domains.
 

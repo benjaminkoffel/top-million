@@ -10,7 +10,7 @@
   "applications": {
     "gecko": {
       "id": "topmillion@benjaminkoffel",
-      "strict_min_version": "57"
+      "strict_min_version": "57.0"
     }
   },
   "background": {
