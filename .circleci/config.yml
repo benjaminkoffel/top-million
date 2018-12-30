@@ -8,5 +8,5 @@ jobs:
       FIREFOX_SECRET: firefox_secret
     steps:
       - checkout
-      - run: npm install --global web-ext
+      - run: sudo npm install --global web-ext
       - run: web-ext sign --api-key $FIREFOX_KEY --api-secret $FIREFOX_SECRET
