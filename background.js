@@ -34,7 +34,7 @@ function handleInit() {
         .then((settings) => {
           if (Object.keys(settings).length === 0 && settings.constructor === Object) {
             browser.storage.local.set({
-              whitelist: ["localhost"]
+              whitelist: [".localhost"]
             });
           } else {
             allowed = sites.concat(settings.whitelist);
