@@ -15,7 +15,7 @@ Trie.prototype.insert = function(word) {
       node.children[word[i]] = new TrieNode(word[i]);
     }
     node = node.children[word[i]];
-    if (i == word.length-1) {
+    if (i == 0) {
       node.end = true;
     }
   }
